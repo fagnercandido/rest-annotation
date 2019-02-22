@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>rest-annotationEAR</artifactId>
+	<packaging>ear</packaging>
+
+	<parent>
+		<groupId>com.restannotation</groupId>
+		<artifactId>rest-annotation</artifactId>
+		<version>1.0.0.0</version>
+	</parent>
+
+	<name>Rest Annotation - Packaging</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>rest-annotationWEBAPP</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<finalName>${project.build.finalName}</finalName>
+					<earName>project.build.finalName</earName>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<version>6</version>
+					<modules>
+						<webModule>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>rest-annotationWEBAPP</artifactId>
+							<contextRoot>/rest-annotation</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
